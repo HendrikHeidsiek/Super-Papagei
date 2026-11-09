@@ -1,0 +1,179 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.329Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.349Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.366Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-jcard.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.383Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-jcard.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.400Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-jcard.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.416Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.432Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.448Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.465Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.480Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.495Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-09T06:44:08.512Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/assigned.html"
+        ],
+        "createdAt": "2026-11-09T07:03:25.468Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/challenger-jcard.html"
+        ],
+        "createdAt": "2026-11-09T07:03:25.484Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-11-09T07:03:25.501Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-11-09T07:03:25.518Z",
+        "reason": "Claude: spent decision-round sketches for unchosen directions, not shipped UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "archivo xc",
+        "files": [
+          "server/app/static/index.html"
+        ],
+        "createdAt": "2026-11-09T08:13:05.892Z",
+        "reason": "Claude: landing-page title face, documented in DESIGN.md web card section"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "archivo",
+        "files": [
+          "server/app/static/index.html"
+        ],
+        "createdAt": "2026-11-09T08:13:05.922Z",
+        "reason": "Claude: landing-page title face, documented in DESIGN.md web card section"
+      },
+      {
+        "rule": "buried-raster",
+        "value": "*",
+        "files": [
+          "server/app/static/index.html"
+        ],
+        "createdAt": "2026-11-09T08:26:45.294Z",
+        "reason": "Claude: .lid eye-closed.png is the blink frame, opacity 0 by design and shown only during the blink"
+      }
+    ]
+  }
+}

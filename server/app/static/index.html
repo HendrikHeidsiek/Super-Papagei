@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E1424">
+<title>Super-Papagei</title>
+<meta name="description" content="Ein privater Hörbuch-Server mit eigener App.">
+<!-- link preview in messengers -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Super-Papagei">
+<meta property="og:description" content="Ein privater Hörbuch-Server mit eigener App.">
+<meta property="og:url" content="{{BASE}}/">
+<meta property="og:image" content="{{BASE}}/static/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Gemalter roter Ara vor einem orangeroten Vollmond">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/static/parrot-icon.png">
+<link rel="apple-touch-icon" href="/static/parrot-icon.png">
+<link rel="preload" href="/static/parrot.jpg" as="image">
+<style>
+@font-face { font-family: "Archivo XC"; src: url("/static/archivo-xcond-black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/static/archivo-medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
+:root {
+  --night: #0E1424;
+  --night-2: #151D33;
+  --cream: #F3E6CF;
+  --cream-soft: #CDBFA9;
+  --paper: #F8F0DF;
+  --ink: #120E0C;
+  --red: #C8281E;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  /* title + painting + download row + operator line fit the first viewport */
+  --panel: min(calc((100svh - 196px) / 1.15), calc(100vw - 32px), 820px);
+}
+* { box-sizing: border-box; margin: 0; }
+html { background: var(--night); color: var(--cream); }
+body {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  font-family: "Archivo", system-ui, sans-serif;
+  font-weight: 500;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom));
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--red); color: var(--cream); }
+
+.inlay { width: var(--panel); display: grid; gap: clamp(10px, 2svh, 22px); }
+
+h1 {
+  font-family: "Archivo XC", "Arial Narrow", sans-serif;
+  font-weight: 900;
+  font-size: clamp(48px, calc(var(--panel) * 0.168), 146px);
+  line-height: .86;
+  letter-spacing: -0.005em;
+  color: var(--cream);
+  text-wrap: balance;
+}
+
+.panel { position: relative; width: var(--panel); aspect-ratio: 1; }
+
+.parrot {
+  position: absolute; inset: 0;
+  padding: 0; border: 0; background: var(--night-2);
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,.35), 0 18px 60px rgba(0,0,0,.45);
+  clip-path: circle(150% at 21% 17%);
+  transition: transform 160ms var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.parrot img { position: absolute; display: block; user-select: none; -webkit-user-drag: none; }
+.parrot .art { inset: 0; width: 100%; height: 100%; }
+/* closed eye, aligned to the painting: 400 px crop at (865,450) of 2048 */
+.parrot .lid {
+  left: 42.236%; top: 21.973%; width: 19.531%; height: 19.531%;
+  opacity: 0; transition: opacity 50ms linear;
+}
+.parrot.blink .lid { opacity: 1; transition-duration: 30ms; }
+.parrot:focus-visible { outline: 3px solid var(--cream); outline-offset: 5px; }
+.parrot.talk { transform: rotate(-0.6deg) scale(1.006); }
+@media (hover: hover) { .parrot:hover { transform: scale(1.004); } }
+
+/* "tap makes sound": a small speaker in the sky corner, gone while he talks */
+.sound {
+  position: absolute; right: 3%; top: 3%; z-index: 2;
+  width: clamp(28px, calc(var(--panel) * .055), 38px); aspect-ratio: 1;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(14, 20, 36, .62);
+  box-shadow: 0 0 0 1px rgba(243, 230, 207, .18);
+  pointer-events: none;
+  transition: opacity 240ms ease;
+}
+.sound svg { width: 58%; height: 58%; }
+.panel.talking .sound { opacity: 0; }
+
+/* comic layer: balloons are drawn as SVG on every tap */
+.comic {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  overflow: visible; pointer-events: none; z-index: 3;
+  transition: opacity 380ms ease;
+}
+.comic.done { opacity: 0; }
+.comic .b {
+  transform-box: view-box;
+  filter: drop-shadow(0 5px 9px rgba(0, 0, 0, .38));
+  animation: grow 440ms var(--ease) both;
+}
+.comic .burst { animation: bang 520ms var(--ease) both; }
+.comic .gone { animation: away 240ms ease-in forwards; }
+.comic text {
+  font-family: "Archivo XC", "Arial Narrow", sans-serif; font-weight: 900;
+  letter-spacing: .02em;
+}
+@keyframes grow {
+  0%   { opacity: 0; transform: scale(.12); }
+  60%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes bang {
+  0%   { opacity: 0; transform: scale(.2) rotate(-24deg); }
+  55%  { opacity: 1; transform: scale(1.14) rotate(5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes away { to { opacity: 0; transform: scale(1.12); } }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* download: an app button, on computers with a QR code for the phone */
+.get { display: flex; align-items: center; gap: 12px 14px; flex-wrap: wrap; }
+.get[hidden] { display: none; }
+.app {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 9px 18px 9px 9px;
+  border-radius: 16px;
+  background: var(--night-2);
+  box-shadow: inset 0 0 0 1px rgba(243, 230, 207, .14), 0 8px 24px rgba(0, 0, 0, .28);
+  color: var(--cream); text-decoration: none;
+  transition: box-shadow 200ms ease, transform 200ms var(--ease);
+}
+.app:hover { box-shadow: inset 0 0 0 1px rgba(243, 230, 207, .34), 0 10px 28px rgba(0, 0, 0, .34); transform: translateY(-1px); }
+.app:active { transform: translateY(0); }
+.app:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+.app img { width: 46px; height: 46px; border-radius: 11px; display: block; box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+.app .t { display: grid; gap: 2px; }
+.app b { font-family: "Archivo XC", "Arial Narrow", sans-serif; font-weight: 900; font-size: 20px; line-height: 1; letter-spacing: .005em; }
+.app small { font-size: 13px; line-height: 1.25; color: var(--cream-soft); }
+.app .dl { width: 18px; height: 18px; margin-left: 4px; color: var(--cream-soft); flex: none; }
+.qr { display: none; }
+.qr img { width: 58px; height: 58px; padding: 5px; border-radius: 6px; background: var(--paper); display: block; }
+@media (hover: hover) and (pointer: fine) and (min-width: 700px) { .qr { display: block; } }
+
+.op { font-size: 13px; line-height: 1.45; color: var(--cream-soft); }
+.op span { display: block; text-wrap: balance; }
+.op span[hidden] { display: none; }
+.op a {
+  color: var(--cream);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em;
+  text-decoration-color: rgba(243, 230, 207, .4);
+  border-radius: 2px;
+}
+.op a:hover { text-decoration-color: var(--cream); }
+.op a:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+
+/* moonrise: the painting opens from the moon, once */
+.js .parrot { clip-path: circle(0% at 21% 17%); }
+.js .ready .parrot { clip-path: circle(150% at 21% 17%); transition: clip-path 1100ms var(--ease), transform 160ms var(--ease); }
+.js h1 { opacity: 0; transform: translateY(8px); }
+.js .ready h1 { opacity: 1; transform: none; transition: opacity 600ms var(--ease) 350ms, transform 600ms var(--ease) 350ms; }
+.js .get, .js .op, .js .sound { opacity: 0; }
+.js .ready .get, .js .ready .op { opacity: 1; transition: opacity 600ms var(--ease) 900ms; }
+.js .ready .sound { opacity: 1; transition: opacity 600ms var(--ease) 1300ms; }
+.js .ready .panel.talking .sound { opacity: 0; transition-delay: 0ms; }
+
+@media (max-width: 640px) {
+  :root { --panel: calc(100vw - 32px); }
+  h1 { font-size: clamp(48px, 21vw, 120px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .parrot, .js .ready .parrot { clip-path: none; transition: none; }
+  .js h1 { transform: none; }
+  .js .ready h1 { transition: opacity 400ms linear; }
+  .parrot.talk { transform: none; }
+  .comic .b, .comic .burst { animation: still 200ms linear both; }
+  .comic .gone { animation: none; opacity: 0; }
+  @keyframes still { from { opacity: 0 } to { opacity: 1 } }
+  .app, .app:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<main class="inlay" id="inlay">
+  <h1>Super-Papagei</h1>
+  <div class="panel" id="panel">
+    <button class="parrot" id="parrot" type="button" aria-label="Papagei antippen, mit Ton">
+      <img class="art" src="/static/parrot.jpg" alt="Gemalter roter Ara vor einem orangeroten Vollmond" width="1600" height="1600">
+      <img class="lid" src="/static/eye-closed.png" alt="" aria-hidden="true">
+    </button>
+    <span class="sound" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#F3E6CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="#F3E6CF"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>
+    </span>
+    <svg class="comic" id="comic" aria-hidden="true"></svg>
+    <p class="sr" id="say" aria-live="polite"></p>
+  </div>
+  <div class="get" id="get">
+    <a class="app" href="/super-papagei.apk" download>
+      <img src="/static/parrot-icon.png" alt="" width="46" height="46">
+      <span class="t">
+        <b>Super-Papagei für Android</b>
+        <small id="apk-size">Android-App als APK</small>
+      </span>
+      <svg class="dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+    </a>
+    <figure class="qr" title="Mit dem Handy scannen">
+      <img src="/qr/app.svg" alt="QR-Code zum Herunterladen der Android-App" width="58" height="58">
+      <figcaption class="sr">Mit dem Handy scannen, um die App herunterzuladen</figcaption>
+    </figure>
+  </div>
+  <p class="op"><span id="app-note">Die App braucht ein Konto auf diesem Server.</span>{{OPERATOR}}</p>
+</main>
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
+  const inlay = document.getElementById('inlay');
+  const panel = document.getElementById('panel');
+  const parrot = document.getElementById('parrot');
+  const comic = document.getElementById('comic');
+  const say = document.getElementById('say');
+  const art = parrot.querySelector('.art');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Download: an APK is of no use on iPhone or iPad; the size comes from the server.
+  const get = document.getElementById('get');
+  const hideApp = () => { get.hidden = true; document.getElementById('app-note').hidden = true; };
+  if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+    hideApp();
+  } else {
+    // Each release has its own file name, so no cache can serve an old APK.
+    fetch('/api/app', { cache: 'no-store' }).then((r) => r.json()).then(({ android }) => {
+      if (!android) { hideApp(); return; }
+      get.querySelector('.app').href = android.url;
+      const mb = Math.round(android.size / 1e6);
+      document.getElementById('apk-size').textContent = `Version ${android.version}${mb ? ` · ${mb} MB` : ''}`;
+    }).catch(() => {});
+  }
+
+  // Moonrise once the painting is decoded; never hide it if loading fails.
+  const start = () => requestAnimationFrame(() => inlay.classList.add('ready'));
+  // After the moonrise the clip is no longer needed (keeps the focus ring unclipped).
+  parrot.addEventListener('transitionend', (e) => { if (e.propertyName === 'clip-path') parrot.style.clipPath = 'none'; });
+  (art.decode ? art.decode() : Promise.resolve()).then(start, start);
+  setTimeout(start, 2500);
+
+  // Blinking: a short close-open, sometimes twice. Only while the tab is visible.
+  let blinkTimer = null;
+  const blink = (twice) => {
+    parrot.classList.add('blink');
+    setTimeout(() => {
+      parrot.classList.remove('blink');
+      if (twice) setTimeout(() => blink(false), 170);
+    }, 130);
+  };
+  const schedule = () => {
+    clearTimeout(blinkTimer);
+    if (document.hidden) return;
+    const wait = (reduce ? 7000 : 3200) + Math.random() * 4200;
+    blinkTimer = setTimeout(() => { blink(Math.random() < .25); schedule(); }, wait);
+  };
+  document.addEventListener('visibilitychange', schedule);
+  schedule();
+
+  // ---------------------------------------------------------------- comic
+  // Balloons are drawn fresh on every tap, a little different each time,
+  // like hand lettering. Positions are fractions of the painting.
+  const NS = 'http://www.w3.org/2000/svg';
+  const mk = (name, attrs, parent) => {
+    const e = document.createElementNS(NS, name);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  };
+  const MOUTH = { x: .795, y: .615 };        // where the beak opens
+  const OFFSTAGE = { x: .015, y: 1.035 };    // just below the frame, bottom left
+
+  // Smooth closed-ish curve through points (Catmull-Rom as cubic Béziers).
+  const curve = (pts) => {
+    let d = '';
+    for (let i = 0; i < pts.length - 1; i++) {
+      const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      d += ` C${p1.x + (p2.x - p0.x) / 6},${p1.y + (p2.y - p0.y) / 6} ${p2.x - (p3.x - p1.x) / 6},${p2.y - (p3.y - p1.y) / 6} ${p2.x},${p2.y}`;
+    }
+    return d;
+  };
+  // Oval balloon with a bent, tapering tail ending at `tip`.
+  const balloon = (cx, cy, rx, ry, tip) => {
+    const phi = Math.atan2((tip.y - cy) / ry, (tip.x - cx) / rx);
+    const gap = .24, n = 15, pts = [];
+    for (let k = 0; k <= n; k++) {
+      const a = phi + gap + k * (2 * Math.PI - 2 * gap) / n;
+      const wob = 1 + (k === 0 || k === n ? 0 : (Math.random() - .5) * .07);
+      pts.push({ x: cx + rx * wob * Math.cos(a), y: cy + ry * wob * Math.sin(a) });
+    }
+    const A = pts[0], B = pts[n];
+    const bend = (p, q, s) => {                 // control point pushed sideways
+      const mx = (p.x + q.x) / 2, my = (p.y + q.y) / 2, dx = q.x - p.x, dy = q.y - p.y;
+      return `${mx - dy * s},${my + dx * s}`;
+    };
+    return `M${A.x},${A.y}${curve(pts)} Q${bend(B, tip, .12)} ${tip.x},${tip.y} Q${bend(tip, A, .12)} ${A.x},${A.y}Z`;
+  };
+  // Jagged sound burst.
+  const burst = (cx, cy, rx, ry) => {
+    const spikes = 13, rot = Math.random() * Math.PI;
+    let d = '';
+    for (let k = 0; k < spikes * 2; k++) {
+      const out = k % 2 === 0;
+      const r = out ? 1 + Math.random() * .22 : .74 + Math.random() * .06;
+      const a = rot + k * Math.PI / spikes;
+      d += `${k ? 'L' : 'M'}${cx + rx * r * Math.cos(a)},${cy + ry * r * Math.sin(a)}`;
+    }
+    return d + 'Z';
+  };
+  // Lettering, centred on (cx, cy); returns its measured box.
+  const letter = (g, lines, size, cx, cy, fill, stroke) => {
+    const lh = size * 1.0;
+    const t = mk('text', { 'text-anchor': 'middle', 'font-size': size, fill }, g);
+    if (stroke) { t.setAttribute('stroke', stroke); t.setAttribute('stroke-width', size * .12); t.setAttribute('paint-order', 'stroke'); t.setAttribute('stroke-linejoin', 'round'); }
+    lines.forEach((ln, i) => {
+      const s = mk('tspan', { x: cx, y: cy - (lines.length - 1) * lh / 2 + i * lh, 'dominant-baseline': 'central' }, t);
+      s.textContent = ln;
+    });
+    return t;
+  };
+
+  const draw = (kind, lines) => {
+    const P = panel.getBoundingClientRect().width;
+    comic.setAttribute('viewBox', `0 0 ${P} ${P}`);
+    const sw = Math.max(2, P * .0052);
+    const g = mk('g', { class: kind === 'kraah' ? 'b burst' : 'b' }, comic);
+    if (kind === 'kraah') {
+      const size = P * .074, cx = P * .79, cy = P * .135;
+      const inner = mk('g', { transform: `rotate(-7 ${cx} ${cy})` }, g);
+      const shape = mk('path', { fill: '#C8281E', stroke: '#120E0C', 'stroke-width': sw, 'stroke-linejoin': 'round' }, inner);
+      const t = letter(inner, lines, size, cx, cy, '#F8F0DF', '#120E0C');
+      const bb = t.getBBox();
+      shape.setAttribute('d', burst(cx, cy, bb.width / 2 * 1.42 + size * .35, bb.height / 2 * 1.9 + size * .45));
+      g.style.transformOrigin = `${cx}px ${cy}px`;
+      return g;
+    }
+    const call = kind === 'call';
+    const size = P * (call ? .05 : .056);
+    let cx = P * (call ? .26 : .76), cy = P * (call ? .855 : .835);
+    const tip = call ? { x: P * OFFSTAGE.x, y: P * OFFSTAGE.y } : { x: P * MOUTH.x, y: P * MOUTH.y };
+    const shape = mk('path', { fill: '#F8F0DF', stroke: '#120E0C', 'stroke-width': sw, 'stroke-linejoin': 'round' }, g);
+    const t = letter(g, lines, size, cx, cy, '#120E0C');
+    const bb = t.getBBox();
+    const rx = bb.width / 2 * 1.26 + size * .5, ry = bb.height / 2 * 1.3 + size * .42;
+    // keep the balloon on the painting where possible
+    const shift = Math.min(0, P * .985 - (cx + rx)) + Math.max(0, P * .015 - (cx - rx));
+    if (shift) { cx += shift; t.querySelectorAll('tspan').forEach((s) => s.setAttribute('x', cx)); }
+    shape.setAttribute('d', balloon(cx, cy, rx, ry, tip));
+    g.style.transformOrigin = `${tip.x}px ${tip.y}px`;
+    return g;
+  };
+
+  // ---------------------------------------------------------------- sound
+  // The parrot screeches. Installations may add dialogue scenes (sound, a line
+  // for the parrot and a call from off-stage); times are seconds into the file,
+  // and the balloons follow the audio clock, so they stay in sync anywhere.
+  let scenes = [{ src: '/static/kraah.mp3', cues: [0], end: 0.9 }];
+  const prep = () => scenes.forEach((sc) => { sc.audio = new Audio(sc.src); sc.audio.preload = 'auto'; });
+  prep();
+  // Optional dialogue scenes (private installations): /static/scenes.json
+  fetch('/static/scenes.json').then((r) => (r.ok ? r.json() : null)).then((list) => {
+    if (!Array.isArray(list) || !list.length) return;
+    scenes = list;
+    prep();
+  }).catch(() => {});
+  let next = Math.random() < .5 ? 0 : 1;
+  let talking = false;
+  let kraah = null;
+
+  const wiggle = () => {
+    parrot.classList.add('talk');
+    setTimeout(() => parrot.classList.remove('talk'), 140);
+  };
+  const show = (sc, i) => {
+    if (i === 0) {
+      kraah = draw('kraah', ['KRAAAH!']);
+      blink(false); wiggle();
+    } else if (i === 1) {
+      draw('line', sc.line);
+      say.textContent = sc.text;
+      wiggle();
+      // The screech is over once he talks.
+      const k = kraah;
+      if (k) setTimeout(() => k.classList.add('gone'), 160);
+    } else {
+      draw('call', sc.call);
+      say.textContent = sc.callText;
+    }
+  };
+  const clear = () => {
+    comic.classList.add('done');
+    setTimeout(() => {
+      comic.replaceChildren(); comic.classList.remove('done');
+      panel.classList.remove('talking');
+      say.textContent = '';
+      talking = false;
+    }, 420);
+  };
+
+  parrot.addEventListener('click', async () => {
+    if (talking) return;
+    talking = true;
+    panel.classList.add('talking');
+    const sc = scenes[next % scenes.length];
+    next = 1 - next; // alternate, so both lines come up
+    let shown = 0;
+    const a = sc.audio;
+    // Start the sound inside the tap (iOS only allows that), then make sure the
+    // comic face is loaded, because the lettering is measured.
+    a.currentTime = 0;
+    const p = a.play();
+    try { await document.fonts.load('900 20px "Archivo XC"'); } catch (e) {}
+    // Fallback clock when the sound cannot play (blocked, muted, offline).
+    let t0 = 0;
+    const began = performance.now();
+    const now = () => (t0 ? (performance.now() - t0) / 1000 : a.currentTime);
+    const tick = () => {
+      // The audio clock stops at the end of the file; continue on the wall clock.
+      if (!t0 && a.ended) t0 = performance.now() - a.currentTime * 1000;
+      const t = now();
+      while (shown < sc.cues.length && t >= sc.cues[shown]) show(sc, shown++);
+      // Done, or the sound got stuck loading: never leave the parrot locked.
+      if (t >= sc.end + .7 || performance.now() - began > (sc.end + 8) * 1000) { clear(); return; }
+      requestAnimationFrame(tick);
+    };
+    (p && p.catch ? p : Promise.resolve()).then(
+      () => requestAnimationFrame(tick),
+      () => { t0 = performance.now(); requestAnimationFrame(tick); },
+    );
+  });
+
+  // Mouse users get a hint that the parrot reacts: it blinks when you point at it.
+  let lastHoverBlink = 0;
+  parrot.addEventListener('pointerenter', (e) => {
+    if (e.pointerType !== 'mouse' || Date.now() - lastHoverBlink < 4000) return;
+    lastHoverBlink = Date.now();
+    blink(false);
+  });
+})();
+</script>
+</body>
+</html>

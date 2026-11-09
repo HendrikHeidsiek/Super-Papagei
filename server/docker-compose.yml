@@ -1,0 +1,22 @@
+services:
+  super-papagei:
+    build: .
+    image: super-papagei-server:latest
+    container_name: super-papagei
+    restart: unless-stopped
+    # Wenn deine Audiobooks-Freigabe einem anderen Benutzer gehört, hier dessen UID:GID eintragen
+    # (z. B. "1026:100" auf Synology). Der Container braucht nur Lesezugriff.
+    user: "1000:1000"
+    environment:
+      SERVER_NAME: "Super-Papagei"
+      ADMIN_USERNAME: "admin"
+      # Nur beim allerersten Start relevant. Danach in der App ändern.
+      ADMIN_PASSWORD: "bitte-aendern"
+      SCAN_INTERVAL_MINUTES: "30"
+      TZ: "Europe/Berlin"
+    volumes:
+      # Pfad zur Freigabe "Audiobooks" auf dem NAS anpassen:
+      - /volume1/Audiobooks:/audiobooks:ro
+      - ./data:/data
+    ports:
+      - "8080:8080"

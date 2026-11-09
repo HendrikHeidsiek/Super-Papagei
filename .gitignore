@@ -1,0 +1,21 @@
+# Build output and generated files
+dist/
+server/download/*
+!server/download/.gitkeep
+server/.venv/
+server/data/
+**/__pycache__/
+*.pyc
+.DS_Store
+
+# Design review captures (regenerated on demand)
+.impeccable/review/
+
+# Signing secrets: never commit
+**/key.properties
+*.jks
+*.keystore
+
+# Personal release settings
+server/release.local
+.impeccable/hook.cache.json

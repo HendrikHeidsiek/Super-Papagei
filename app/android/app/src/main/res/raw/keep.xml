@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The release build strips resources it thinks are unused. audio_service loads
+     its notification icons by name, so without this the media player
+     (notification, quick settings, lock screen) fails to build. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/audio_service_*,@mipmap/ic_launcher" />

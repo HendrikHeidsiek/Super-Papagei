@@ -1,0 +1,713 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T06:59:00+00:00",
+  "title": "Design System: Super-Papagei",
+  "extensions": {
+    "colorMeta": {
+      "tint": {
+        "role": "primary",
+        "displayName": "Ember Orange",
+        "canonical": "#E8590C",
+        "tonalRamp": [
+          "#3A2012",
+          "#683418",
+          "#9B4517",
+          "#D45611",
+          "#EE6F2B",
+          "#E79C74",
+          "#EBC9B8",
+          "#F8F1ED"
+        ]
+      },
+      "tint-text": {
+        "role": "primary",
+        "displayName": "Burnt Orange Text",
+        "canonical": "#C2410C",
+        "tonalRamp": [
+          "#3A1E13",
+          "#672F18",
+          "#9A3E19",
+          "#D24B13",
+          "#EC642D",
+          "#E69675",
+          "#EAC7B8",
+          "#F7F0ED"
+        ]
+      },
+      "tint-fill": {
+        "role": "primary",
+        "displayName": "Button Orange",
+        "canonical": "#C2410C",
+        "tonalRamp": [
+          "#3A1E13",
+          "#672F18",
+          "#9A3E19",
+          "#D24B13",
+          "#EC642D",
+          "#E69675",
+          "#EAC7B8",
+          "#F7F0ED"
+        ]
+      },
+      "on-tint": {
+        "role": "neutral",
+        "displayName": "On Button (light)",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "System White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "grouped": {
+        "role": "neutral",
+        "displayName": "Grouped Grey",
+        "canonical": "#F2F2F7",
+        "tonalRamp": [
+          "#21212C",
+          "#35354A",
+          "#48486B",
+          "#59598C",
+          "#7373A6",
+          "#9E9EBD",
+          "#CACAD8",
+          "#F1F1F4"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "label": {
+        "role": "neutral",
+        "displayName": "Label",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Label",
+        "canonical": "#6C6C70",
+        "tonalRamp": [
+          "#262627",
+          "#3F3F41",
+          "#58585B",
+          "#717175",
+          "#8A8A8E",
+          "#ACACAF",
+          "#D1D1D2",
+          "#F2F2F2"
+        ]
+      },
+      "tertiary": {
+        "role": "neutral",
+        "displayName": "Tertiary Label",
+        "canonical": "#8E8E93",
+        "tonalRamp": [
+          "#262627",
+          "#3F3F41",
+          "#58585B",
+          "#707075",
+          "#8A8A8F",
+          "#ACACAF",
+          "#D0D0D2",
+          "#F2F2F2"
+        ]
+      },
+      "separator": {
+        "role": "neutral",
+        "displayName": "Separator",
+        "canonical": "#D1D1D6",
+        "tonalRamp": [
+          "#252528",
+          "#3D3D42",
+          "#55555D",
+          "#6D6D79",
+          "#868692",
+          "#AAAAB1",
+          "#CFCFD3",
+          "#F2F2F3"
+        ]
+      },
+      "fill": {
+        "role": "neutral",
+        "displayName": "Fill",
+        "canonical": "#EDEDF0",
+        "tonalRamp": [
+          "#242428",
+          "#3C3C44",
+          "#535360",
+          "#69697D",
+          "#828296",
+          "#A8A8B3",
+          "#CFCFD4",
+          "#F2F2F3"
+        ]
+      },
+      "success": {
+        "role": "semantic",
+        "displayName": "System Green",
+        "canonical": "#248A3D",
+        "tonalRamp": [
+          "#193320",
+          "#265A32",
+          "#2E8443",
+          "#34B253",
+          "#4DCB6C",
+          "#88D39A",
+          "#C1E2C9",
+          "#EFF6F0"
+        ]
+      },
+      "danger": {
+        "role": "semantic",
+        "displayName": "System Red",
+        "canonical": "#D70015",
+        "tonalRamp": [
+          "#3C1014",
+          "#6C131C",
+          "#A2101E",
+          "#DF071C",
+          "#F82035",
+          "#ED6D7A",
+          "#EDB5BA",
+          "#F8ECEE"
+        ]
+      },
+      "dark-tint": {
+        "role": "primary",
+        "displayName": "Ember Orange (dark)",
+        "canonical": "#FF8A3D",
+        "tonalRamp": [
+          "#3C2210",
+          "#6C3713",
+          "#A24A10",
+          "#DF5D07",
+          "#F87620",
+          "#EDA06D",
+          "#EDCBB5",
+          "#F8F1EC"
+        ]
+      },
+      "dark-tint-text": {
+        "role": "primary",
+        "displayName": "Burnt Orange Text (dark)",
+        "canonical": "#FF9F5A",
+        "tonalRamp": [
+          "#3C2310",
+          "#6C3813",
+          "#A24D10",
+          "#DF6107",
+          "#F87B20",
+          "#EDA36D",
+          "#EDCCB5",
+          "#F8F1EC"
+        ]
+      },
+      "dark-tint-fill": {
+        "role": "primary",
+        "displayName": "Button Orange (dark)",
+        "canonical": "#FF8A3D",
+        "tonalRamp": [
+          "#3C2210",
+          "#6C3713",
+          "#A24A10",
+          "#DF5D07",
+          "#F87620",
+          "#EDA06D",
+          "#EDCBB5",
+          "#F8F1EC"
+        ]
+      },
+      "dark-on-tint": {
+        "role": "neutral",
+        "displayName": "On Button (light) (dark)",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "dark-background": {
+        "role": "neutral",
+        "displayName": "System White (dark)",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "dark-grouped": {
+        "role": "neutral",
+        "displayName": "Grouped Grey (dark)",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "dark-card": {
+        "role": "neutral",
+        "displayName": "Card (dark)",
+        "canonical": "#1C1C1E",
+        "tonalRamp": [
+          "#252527",
+          "#3E3E41",
+          "#57575C",
+          "#6F6F76",
+          "#898990",
+          "#ABABB0",
+          "#D0D0D2",
+          "#F2F2F2"
+        ]
+      },
+      "dark-label": {
+        "role": "neutral",
+        "displayName": "Label (dark)",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#404040",
+          "#595959",
+          "#737373",
+          "#8C8C8C",
+          "#ADADAD",
+          "#D1D1D1",
+          "#F2F2F2"
+        ]
+      },
+      "dark-secondary": {
+        "role": "neutral",
+        "displayName": "Secondary Label (dark)",
+        "canonical": "#AEAEB2",
+        "tonalRamp": [
+          "#262627",
+          "#3F3F41",
+          "#57575B",
+          "#707075",
+          "#8A8A8F",
+          "#ACACAF",
+          "#D0D0D2",
+          "#F2F2F2"
+        ]
+      },
+      "dark-tertiary": {
+        "role": "neutral",
+        "displayName": "Tertiary Label (dark)",
+        "canonical": "#8E8E93",
+        "tonalRamp": [
+          "#262627",
+          "#3F3F41",
+          "#58585B",
+          "#707075",
+          "#8A8A8F",
+          "#ACACAF",
+          "#D0D0D2",
+          "#F2F2F2"
+        ]
+      },
+      "dark-separator": {
+        "role": "neutral",
+        "displayName": "Separator (dark)",
+        "canonical": "#38383A",
+        "tonalRamp": [
+          "#262627",
+          "#3F3F41",
+          "#58585B",
+          "#717175",
+          "#8A8A8E",
+          "#ACACAF",
+          "#D1D1D2",
+          "#F2F2F2"
+        ]
+      },
+      "dark-fill": {
+        "role": "neutral",
+        "displayName": "Fill (dark)",
+        "canonical": "#2C2C2E",
+        "tonalRamp": [
+          "#262627",
+          "#3F3F41",
+          "#58585B",
+          "#707075",
+          "#8A8A8F",
+          "#ACACAF",
+          "#D0D0D2",
+          "#F2F2F2"
+        ]
+      },
+      "dark-success": {
+        "role": "semantic",
+        "displayName": "System Green (dark)",
+        "canonical": "#30D158",
+        "tonalRamp": [
+          "#18341F",
+          "#235C31",
+          "#2B8842",
+          "#2EB750",
+          "#48D16A",
+          "#85D699",
+          "#BFE3C8",
+          "#EFF6F0"
+        ]
+      },
+      "dark-danger": {
+        "role": "semantic",
+        "displayName": "System Red (dark)",
+        "canonical": "#FF453A",
+        "tonalRamp": [
+          "#3C1310",
+          "#6C1813",
+          "#A21810",
+          "#DF1307",
+          "#F82C20",
+          "#ED756D",
+          "#EDB8B5",
+          "#F8EDEC"
+        ]
+      },
+      "snackbar-light": {
+        "role": "neutral",
+        "displayName": "Snackbar (light mode)",
+        "canonical": "#1C1C1EF2",
+        "tonalRamp": [
+          "#252527",
+          "#3E3E41",
+          "#57575C",
+          "#6F6F76",
+          "#898990",
+          "#ABABB0",
+          "#D0D0D2",
+          "#F2F2F2"
+        ]
+      },
+      "snackbar-dark": {
+        "role": "neutral",
+        "displayName": "Snackbar (dark mode)",
+        "canonical": "#F2F2F7F2",
+        "tonalRamp": [
+          "#21212C",
+          "#35354A",
+          "#48486B",
+          "#59598C",
+          "#7373A6",
+          "#9E9EBD",
+          "#CACAD8",
+          "#F1F1F4"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "large-title": {
+        "displayName": "Large Title",
+        "purpose": "Page titles in the collapsing navigation bar."
+      },
+      "title-1": {
+        "displayName": "Title 1",
+        "purpose": "Book title in the book header."
+      },
+      "title-2": {
+        "displayName": "Title 2",
+        "purpose": "Section headers above shelves."
+      },
+      "title-3": {
+        "displayName": "Title 3",
+        "purpose": "Sub-headings in sheets."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Button labels, nav title, fact values."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Grouped rows, text fields, Cupertino text."
+      },
+      "subhead": {
+        "displayName": "Subhead",
+        "purpose": "Tile titles (500), mini-player title (600), chips."
+      },
+      "footnote": {
+        "displayName": "Footnote",
+        "purpose": "Author lines, captions, grouped headers/footers; secondary colour."
+      },
+      "footnote-emphasis": {
+        "displayName": "Footnote Emphasis",
+        "purpose": "Emphasised small labels."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Player timecodes, fact-strip labels."
+      },
+      "tab-label": {
+        "displayName": "Tab Label",
+        "purpose": "Tab bar labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "cover-lift",
+        "value": "0 1px 3px rgba(0,0,0,.10), 0 6px 16px rgba(0,0,0,.12)",
+        "purpose": "Every cover except the mini-player thumbnail and back layers of stacked series thumbnails."
+      },
+      {
+        "name": "floating-bar",
+        "value": "0 3px 12px rgba(0,0,0,.08)",
+        "purpose": "Mini player floating above the tab bar."
+      },
+      {
+        "name": "app-icon",
+        "value": "0 4px 12px rgba(0,0,0,.12)",
+        "purpose": "Launcher icon on the login screen."
+      }
+    ],
+    "motion": [
+      {
+        "name": "cover-fade",
+        "value": "150ms",
+        "purpose": "Cover image fade-in over its colour placeholder."
+      },
+      {
+        "name": "player-cover-scale",
+        "value": "420ms cubic-bezier(0.33, 1, 0.68, 1)",
+        "purpose": "Player cover scales to 0.88 when paused, back to 1 when playing (easeOutCubic)."
+      },
+      {
+        "name": "page-transition",
+        "value": "Cupertino page route",
+        "purpose": "Push/pop on iOS and Android alike; cover hero from mini player to player."
+      }
+    ],
+    "playerBackground": {
+      "source": "app/lib/ui/player_sheet.dart playerBackground()",
+      "fallbackBase": "#8899AA",
+      "light": {
+        "lightness": 0.9,
+        "saturation": "s*0.9 clamped 0.12–0.45"
+      },
+      "dark": {
+        "lightness": 0.16,
+        "saturation": "s*0.7 clamped 0–0.5"
+      },
+      "neutralThreshold": "saturation < 0.08 keeps its own saturation",
+      "ink": {
+        "light": "#111111",
+        "dark": "#FFFFFF",
+        "secondaryAlpha": 0.66
+      }
+    },
+    "tracking": {
+      "source": "app/lib/ui/theme.dart track()",
+      "ios": {
+        "34": 0.37,
+        "28": 0.36,
+        "22": -0.26,
+        "20": -0.45,
+        "17": -0.43,
+        "16": -0.31,
+        "15": -0.23,
+        "13": -0.08,
+        "12": 0
+      },
+      "android": "0 at all sizes (Roboto)"
+    },
+    "platform": "Apple look on iOS and Android: Cupertino components, icons, dialogs and transitions; SF Pro on iOS, Roboto on Android; Android keeps system Back and insets.",
+    "assets": [
+      {
+        "path": "app/assets/icon.png",
+        "provenance": "Gemini-generated gouache-style macaw head before a blood-orange moon (prompt app/assets/concepts/prompt-r.txt, embedded in the PNG). Adaptive Android icon uses it as background layer; icon_foreground.png is empty."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Filled Button",
+      "kind": "button",
+      "refersTo": "button-filled",
+      "description": "Primary action (Weiterhören, Anmelden). Deep orange with white label in light mode; 50 pt tall, 12 pt radius.",
+      "html": "<button class=\"ds-btn-filled\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7 4.5v15l12.5-7.5z\"/></svg>Weiterhören</button>",
+      "css": ".ds-btn-filled { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:50px; padding:0 18px; min-width:280px; background:#C2410C; color:#FFFFFF; border:none; border-radius:12px; font:600 17px/1 -apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; letter-spacing:-0.43px; cursor:pointer; transition:opacity .15s; } .ds-btn-filled:hover { opacity:.92; } .ds-btn-filled:active { background:#A8380A; } .ds-btn-filled:focus-visible { outline:2px solid #E8590C; outline-offset:2px; } .ds-btn-filled:disabled { opacity:.5; }"
+    },
+    {
+      "name": "Filled Button (Dark)",
+      "kind": "button",
+      "refersTo": "button-filled-dark",
+      "description": "Dark-mode filled button: bright orange with black label.",
+      "html": "<div class=\"ds-dark\"><button class=\"ds-btn-filled-dark\">Weiterhören</button></div>",
+      "css": ".ds-dark { background:#000; padding:16px; border-radius:12px; display:inline-block; } .ds-btn-filled-dark { height:50px; padding:0 18px; min-width:240px; background:#FF8A3D; color:#000000; border:none; border-radius:12px; font:600 17px/1 -apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; cursor:pointer; } .ds-btn-filled-dark:hover { opacity:.92; } .ds-btn-filled-dark:focus-visible { outline:2px solid #FF9F5A; outline-offset:2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-filled-secondary",
+      "description": "Second action beside a filled button: grey fill, orange text.",
+      "html": "<button class=\"ds-btn-secondary\">Laden</button>",
+      "css": ".ds-btn-secondary { height:50px; padding:0 18px; min-width:160px; background:#EDEDF0; color:#C2410C; border:none; border-radius:12px; font:600 17px/1 -apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; letter-spacing:-0.43px; cursor:pointer; } .ds-btn-secondary:active { background:#E0E0E5; } .ds-btn-secondary:focus-visible { outline:2px solid #E8590C; outline-offset:2px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip-filter",
+      "description": "Library filters; selected inverts to black capsule.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip ds-chip-on\">Alle</button><button class=\"ds-chip\">Begonnen</button><button class=\"ds-chip\">Geladen</button></div>",
+      "css": ".ds-chips { display:flex; gap:8px; } .ds-chip { height:36px; padding:0 16px; border:none; border-radius:18px; background:#EDEDF0; color:#000; font:500 15px/1 -apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; cursor:pointer; } .ds-chip:hover { background:#E3E3E8; } .ds-chip-on, .ds-chip-on:hover { background:#000; color:#FFF; } .ds-chip:focus-visible { outline:2px solid #E8590C; outline-offset:2px; }"
+    },
+    {
+      "name": "Grouped Section",
+      "kind": "card",
+      "refersTo": "grouped-section",
+      "description": "Settings-style inset list on grouped grey, with caps header, hairlines and chevrons.",
+      "html": "<div class=\"ds-grouped\"><div class=\"ds-gh\">DEIN HÖREN</div><div class=\"ds-gs\"><a class=\"ds-row\" href=\"#\"><span>Hörzeit</span><span class=\"ds-val\">142 h</span><svg width=\"9\" height=\"14\" viewBox=\"0 0 9 14\"><path d=\"M1.5 1.5L7 7l-5.5 5.5\" stroke=\"#8E8E93\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/></svg></a><a class=\"ds-row\" href=\"#\"><span>Beendet</span><span class=\"ds-val\">37</span><svg width=\"9\" height=\"14\" viewBox=\"0 0 9 14\"><path d=\"M1.5 1.5L7 7l-5.5 5.5\" stroke=\"#8E8E93\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\"/></svg></a></div></div>",
+      "css": ".ds-grouped { background:#F2F2F7; padding:16px; font-family:-apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; width:340px; } .ds-gh { padding:0 16px 6px; font-size:13px; letter-spacing:.3px; color:#6C6C70; } .ds-gs { background:#FFF; border-radius:12px; overflow:hidden; } .ds-row { display:flex; align-items:center; gap:8px; min-height:48px; padding:11px 16px; box-sizing:border-box; color:#000; text-decoration:none; font-size:17px; letter-spacing:-0.43px; position:relative; } .ds-row + .ds-row::before { content:''; position:absolute; top:0; left:16px; right:0; height:.5px; background:#D1D1D6; } .ds-row span:first-child { flex:1; } .ds-val { color:#6C6C70; font-variant-numeric:tabular-nums; } .ds-row:hover, .ds-row:focus-visible { background:rgba(237,237,240,.6); outline:none; }"
+    },
+    {
+      "name": "Book Tile",
+      "kind": "custom",
+      "refersTo": "book-tile",
+      "description": "Cover (8 pt, cover lift), progress line when started, title, author, remaining time in tint-text.",
+      "html": "<a class=\"ds-tile\" href=\"#\"><div class=\"ds-cover\"></div><div class=\"ds-prog\"><i></i></div><div class=\"ds-t\">Scion</div><div class=\"ds-a\">James Islington</div><div class=\"ds-s\">noch 5 h 49 min</div></a>",
+      "css": ".ds-tile { display:block; width:140px; text-decoration:none; font-family:-apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; } .ds-cover { width:140px; height:140px; border-radius:8px; background:linear-gradient(160deg,#0E2A3A,#1E6E86); box-shadow:0 1px 3px rgba(0,0,0,.10),0 6px 16px rgba(0,0,0,.12); margin-bottom:8px; transition:transform .2s; } .ds-tile:hover .ds-cover { transform:scale(1.02); } .ds-tile:focus-visible { outline:2px solid #E8590C; outline-offset:4px; border-radius:8px; } .ds-prog { height:3px; border-radius:3px; background:rgba(0,0,0,.12); margin-bottom:6px; overflow:hidden; } .ds-prog i { display:block; width:35%; height:100%; background:#E8590C; } .ds-t { font-size:15px; font-weight:500; color:#000; letter-spacing:-0.23px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } .ds-a { font-size:13px; color:#6C6C70; } .ds-s { font-size:13px; color:#C2410C; font-variant-numeric:tabular-nums; margin-top:2px; }"
+    },
+    {
+      "name": "Mini Player",
+      "kind": "custom",
+      "refersTo": "mini-player",
+      "description": "Floating 60 pt card above the tab bar; unshadowed 6 pt cover, title, chapter, play and skip-30.",
+      "html": "<div class=\"ds-mini\"><div class=\"ds-mc\"></div><div class=\"ds-mt\"><b>Scion</b><span>Kapitel 3</span></div><button class=\"ds-mb\" aria-label=\"Abspielen\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M7 4.5v15l12.5-7.5z\" fill=\"#000\"/></svg></button></div>",
+      "css": ".ds-mini { display:flex; align-items:center; width:340px; height:60px; background:#FFF; border-radius:14px; box-shadow:0 3px 12px rgba(0,0,0,.08); font-family:-apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; } .ds-mc { width:44px; height:44px; margin:8px; border-radius:6px; background:linear-gradient(160deg,#0E2A3A,#1E6E86); } .ds-mt { flex:1; display:flex; flex-direction:column; } .ds-mt b { font-size:15px; font-weight:600; } .ds-mt span { font-size:13px; color:#6C6C70; } .ds-mb { width:44px; height:44px; border:none; background:none; border-radius:22px; cursor:pointer; margin-right:8px; } .ds-mb:hover { background:rgba(237,237,240,.6); } .ds-mb:focus-visible { outline:2px solid #E8590C; }"
+    },
+    {
+      "name": "Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab-bar",
+      "description": "Four Cupertino tabs; selected icon tint, label tint-text; inactive tertiary/secondary.",
+      "html": "<nav class=\"ds-tabs\"><a class=\"ds-tab ds-on\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\"><path d=\"M3 11L12 3l9 8v10h-6v-6H9v6H3z\" fill=\"#E8590C\"/></svg><span>Start</span></a><a class=\"ds-tab\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#8E8E93\" stroke-width=\"1.6\"><path d=\"M3 5c3-1 6-1 9 1v14c-3-2-6-2-9-1zM21 5c-3-1-6-1-9 1v14c3-2 6-2 9-1z\"/></svg><span>Bibliothek</span></a><a class=\"ds-tab\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#8E8E93\" stroke-width=\"1.6\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v9M8 12l4 4 4-4\"/></svg><span>Downloads</span></a><a class=\"ds-tab\" href=\"#\"><svg width=\"25\" height=\"25\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#8E8E93\" stroke-width=\"1.6\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"10\" r=\"3\"/><path d=\"M6.5 18.5c3-3 8-3 11 0\"/></svg><span>Profil</span></a></nav>",
+      "css": ".ds-tabs { display:flex; width:360px; height:54px; background:rgba(255,255,255,.86); font-family:-apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; } .ds-tab { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-decoration:none; font-size:11px; font-weight:500; color:#6C6C70; } .ds-on { color:#C2410C; } .ds-tab:hover span { color:#000; } .ds-on:hover span { color:#C2410C; } .ds-tab:focus-visible { outline:2px solid #E8590C; border-radius:8px; }"
+    },
+    {
+      "name": "Player Sheet",
+      "kind": "custom",
+      "description": "Signature: Apple Music style sheet tinted from the cover colour (lightness .90), cover untouched, controls in ink.",
+      "html": "<div class=\"ds-player\"><div class=\"ds-handle\"></div><div class=\"ds-pc\"></div><div class=\"ds-pt\">Scion</div><div class=\"ds-pa\">James Islington</div><div class=\"ds-scrub\"><i></i></div><button class=\"ds-pill\">1×</button></div>",
+      "css": ".ds-player { width:320px; padding:6px 28px 20px; background:#DCE6E9; border-radius:14px 14px 0 0; color:#111; font-family:-apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; } .ds-handle { width:38px; height:5px; border-radius:3px; background:rgba(17,17,17,.25); margin:9px auto 24px; } .ds-pc { width:264px; height:264px; margin:0 auto 24px; border-radius:12px; background:linear-gradient(160deg,#0E2A3A,#1E6E86); box-shadow:0 1px 3px rgba(0,0,0,.10),0 6px 16px rgba(0,0,0,.12); } .ds-pt { font-size:21px; font-weight:700; } .ds-pa { font-size:17px; color:rgba(17,17,17,.66); margin-bottom:16px; } .ds-scrub { height:6px; border-radius:6px; background:rgba(17,17,17,.14); margin-bottom:12px; } .ds-scrub i { display:block; width:12%; height:100%; border-radius:6px; background:#111; } .ds-pill { height:36px; min-width:56px; padding:0 12px; border:none; border-radius:18px; background:transparent; color:#111; font:600 15px/1 -apple-system, \"SF Pro Text\", Roboto, system-ui, sans-serif; font-variant-numeric:tabular-nums; cursor:pointer; } .ds-pill:hover, .ds-pill:focus-visible { background:rgba(17,17,17,.14); outline:none; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Apple Shelf",
+    "overview": "Super-Papagei looks like a first-party Apple app that happens to do everything Audible does. Convention is the point: the user chose \"Funktionen von Audible, Optik von Apple\", so the system is iOS's own grammar (white system background, grey grouped lists, Large Titles, Cupertino navigation and icons, one tint) executed at Apple's level rather than reinterpreted. The cover art is the only imagery and it is always large, square, softly shadowed and never tinted; everything around it stays quiet so the covers carry the colour.\n\nThe app runs the same Apple look on both platforms. iOS gets SF Pro with Apple's per-size tracking; Android gets Roboto at zero tracking, Cupertino page transitions and components, and keeps its system Back gesture and insets. Dark Mode is a genuine second appearance built from Apple's dark system colours, not an inverted light theme.\n\nThe signature is the full-screen player in the manner of Apple Music: a sheet whose background is a pale (light) or deep (dark) tone derived from the cover's own colour, with ink-coloured controls on it and the cover itself untouched. Density is relaxed, with 20 pt page gutters and generous section spacing; the app should never feel like a file browser or admin tool.",
+    "keyCharacteristics": [
+      "White system background, #F2F2F7 grouped lists, black Large Titles.",
+      "One orange tint, split into four roles by contrast job (icon/ring, text, filled button, label on fill).",
+      "Covers large, square, untinted, with a two-layer soft shadow; radius scales with cover size.",
+      "Full-screen player tinted from the cover colour; controls in ink, not orange.",
+      "Cupertino components, icons and transitions on iOS and Android alike.",
+      "German UI copy."
+    ],
+    "rules": [
+      {
+        "name": "The Four Oranges Rule",
+        "body": "Pick the orange by job, never by eye: tint for glyphs, rings and fills without text; tint-text for any orange text or Cupertino action; tint-fill + on-tint for filled buttons. Orange type in light mode is always #C2410C, never #E8590C.",
+        "section": "colors"
+      },
+      {
+        "name": "The Covers Bring the Colour Rule",
+        "body": "Chrome stays neutral; the only saturated area besides the tint is cover art and the cover-derived player background. Covers are never tinted, overlaid or recoloured.",
+        "section": "colors"
+      },
+      {
+        "name": "The Neutral Stays Neutral Rule",
+        "body": "playerBackground() takes the cover's dominant colour to lightness .90 (light) or .16 (dark), with saturation scaled ×.9 clamped to .12–.45 (light) or ×.7 capped at .5 (dark). Covers whose saturation is below .08 keep their own near-zero saturation, so grey and black covers get a grey sheet instead of HSL's false red. Fallback base colour #8899AA.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular Time Rule",
+        "body": "Every duration, timecode, speed, count and size uses tabular figures, so numbers don't jitter while playing.",
+        "section": "typography"
+      },
+      {
+        "name": "The Apple Caps Rule",
+        "body": "Uppercase appears only where iOS uses it natively: grouped-list section headers (footnote, +0.3 tracking) and the book's fact-strip labels (caption, +0.4 tracking) above their values. Nothing else is set in caps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Covers Float Rule",
+        "body": "Lists, buttons, chips and cards carry no shadow. If it isn't a cover, the mini player or the app icon, it is flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** choose the orange by job: tint (#E8590C / #FF8A3D) for icons, rings and textless fills; tint-text (#C2410C / #FF9F5A) for text and Cupertino actions; tint-fill + on-tint for filled buttons.",
+      "**Do** scale cover radius with size: 12 pt large, 8 pt tile, 6 pt row and mini player, 5 pt small thumbnails.",
+      "**Do** keep covers square, untinted and shadowed with the two-layer cover lift.",
+      "**Do** derive the player background from the cover colour with playerBackground(), keeping covers under .08 saturation neutral.",
+      "**Do** use Cupertino components, icons, dialogs and page transitions on both iOS and Android, with system Back and insets intact on Android.",
+      "**Do** apply `track()` to every text size and tabular figures to every number.",
+      "**Do** give Dark Mode its own Apple dark system values rather than inverting light ones."
+    ],
+    "donts": [
+      "**Don't** set text in #E8590C on a light background; it fails contrast.",
+      "**Don't** tint, overlay or recolour cover art.",
+      "**Don't** put shadows on lists, chips, buttons or cards.",
+      "**Don't** introduce Material ripples, Material icons or a second accent colour.",
+      "**Don't** set text in caps outside grouped-list headers and the fact-strip labels.",
+      "**Don't** turn the app into a dark streaming dashboard; light mode is white with grey grouped lists."
+    ]
+  }
+}
