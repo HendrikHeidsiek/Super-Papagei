@@ -96,6 +96,18 @@ cd app && flutter build apk --release --dart-define=DEFAULT_SERVER=https://audio
 - Für Updates über bestehende Installationen hinweg braucht es immer denselben Signaturschlüssel. Lege dazu `app/android/key.properties` an (Vorlage im Kommentar von `app/android/app/build.gradle.kts`) und bewahre den Schlüssel gut auf.
 - iPhone: in Xcode `app/ios/Runner.xcworkspace` öffnen, eigenes Team und eigene Bundle-ID wählen, aufs Gerät spielen.
 
+### Android Auto bei selbst installierter App
+
+Android Auto zeigt im Auto-Startbildschirm nur Apps aus dem Play Store. Eine selbst installierte APK erscheint dort erst nach einer einmaligen Einstellung auf dem Handy (bis dahin taucht nur der Player auf, wenn die Wiedergabe schon auf dem Handy läuft):
+
+1. **Einstellungen → Verbundene Geräte → Verbindungseinstellungen → Android Auto** öffnen (je nach Hersteller auch über die Suche in den Einstellungen nach „Android Auto“).
+2. Ganz nach unten scrollen und etwa zehnmal auf **Version** tippen, die Frage nach den Entwicklereinstellungen bestätigen.
+3. Oben rechts **⋮ → Entwicklereinstellungen** öffnen und **Unbekannte Quellen** einschalten.
+4. Unter **Launcher anpassen** prüfen, dass Super-Papagei eingeschaltet ist.
+5. Das Handy einmal vom Auto trennen und neu verbinden.
+
+Danach steht Super-Papagei als eigene App im Auto, mit „Weiterhören“, heruntergeladenen Büchern, Bibliothek und Sprachsuche („Hey Google, spiele … in Super-Papagei“). Die Einstellung bleibt bei App-Updates erhalten.
+
 ### App über den Server verteilen
 
 `server/release.sh <version>` baut die App, legt sie ins Server-Image und lädt es hoch. Die Startseite bietet sie dann zum Download an, und installierte Apps melden selbst, wenn es eine neue Version gibt. Eigene Werte (Image-Name, Server-Adresse, Betreiber) kommen in `server/release.local`:

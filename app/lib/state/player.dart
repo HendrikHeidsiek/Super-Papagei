@@ -487,7 +487,16 @@ class PlayerController extends BaseAudioHandler with SeekHandler, ChangeNotifier
     if (book == null || _loading) return;
     _pausedAt = DateTime.now();
     _save(push: true);
+    _idleTimer?.cancel();
+    _idleTimer = Timer(_idleRelease, () {
+      if (!player.playing && !_intendPlay && !_recovering && !_loading) stop();
+    });
   }
+
+  /// After this long paused, the player leaves the notification and the app may
+  /// sleep. The book stays in the app's mini player and continues from there.
+  static const _idleRelease = Duration(hours: 1);
+  Timer? _idleTimer;
 
   Future<void> _onBookEnd() async {
     final b = book;
@@ -527,6 +536,7 @@ class PlayerController extends BaseAudioHandler with SeekHandler, ChangeNotifier
       await seekTo(position - 3);
     }
     _pausedAt = null;
+    _idleTimer?.cancel();
     if (_fading) {
       _fading = false;
       await player.setVolume(1);
@@ -544,9 +554,14 @@ class PlayerController extends BaseAudioHandler with SeekHandler, ChangeNotifier
 
   @override
   Future<void> stop() async {
+    _idleTimer?.cancel();
     await _save(push: true);
+    _halt();
     await player.stop();
+    // The next Play loads the book again from the saved position.
+    _loaded = false;
     await super.stop();
+    notifyListeners();
   }
 
   Future<void> toggle() => (player.playing || _recovering) ? pause() : play();

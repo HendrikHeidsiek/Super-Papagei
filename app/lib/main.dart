@@ -35,8 +35,11 @@ Future<void> main() async {
     config: const AudioServiceConfig(
       androidNotificationChannelId: 'org.heidsiek.hoerwerk.playback',
       androidNotificationChannelName: 'Wiedergabe',
-      androidNotificationOngoing: true,
-      androidStopForegroundOnPause: true,
+      // Stay a foreground service while paused. Otherwise Android freezes the
+      // app after a few minutes and the notification, lock screen and car
+      // controls stop responding. A long pause releases it (player.dart).
+      androidNotificationOngoing: false,
+      androidStopForegroundOnPause: false,
       rewindInterval: Duration(seconds: 15),
       fastForwardInterval: Duration(seconds: 30),
       // Android Auto: shelves as a list, books as a grid of covers.
