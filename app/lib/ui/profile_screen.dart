@@ -15,6 +15,7 @@ import 'home_screen.dart';
 import 'theme.dart';
 import 'widgets.dart';
 import 'parrot.dart';
+import 'rewind_settings.dart';
 import '../state/downloads.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -94,7 +95,13 @@ class ProfileScreen extends StatelessWidget {
               chevron: true,
               onTap: () => _pickSkip(context, false),
             ),
-          ], footer: 'Nach einer Pause von mehr als 30 Sekunden springt Super-Papagei beim Fortsetzen kurz zurück, nach 5 Minuten um 10 Sekunden.'),
+            Row2(
+              title: 'Nach Pause zurück',
+              value: rewindSummary(p),
+              chevron: true,
+              onTap: () => Navigator.of(context).push(CupertinoPageRoute(builder: (_) => const RewindSettingsScreen())),
+            ),
+          ]),
         ),
         SliverToBoxAdapter(
           child: Grouped(

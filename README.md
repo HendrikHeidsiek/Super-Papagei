@@ -13,6 +13,7 @@ Ein kleiner Hörbuch-Server für die eigene Sammlung auf dem NAS, mit eigener Ap
 - **Mehrere Personen:** jedes Konto mit eigenem Fortschritt, eigenen Lesezeichen und eigenem Profilbild.
 - **Unterwegs:** Downloads nur im WLAN (umschaltbar), Wiedergabe auf dem Sperrbildschirm, in der Benachrichtigung und in **Android Auto**, inklusive Sprachsuche.
 - **Abends:** Sleep-Timer mit sanftem Ausblenden, Ende des Kapitels, und Schütteln startet den Timer neu.
+- **Wieder reinkommen:** Nach einer Pause springt die App ein paar Sekunden zurück, in selbst einstellbaren Stufen (z. B. ab 10 Minuten Pause 5 Sekunden).
 - **Bibliothek:** große Cover, Serien in richtiger Reihenfolge, Autoren, Suche, Filter, helle und dunkle Darstellung.
 - **Startseite:** Der Server zeigt im Browser eine kleine Seite mit gemaltem Papagei und dem App-Download.
 

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:audio_service/audio_service.dart';
@@ -123,7 +124,42 @@ class PlayerController extends BaseAudioHandler with SeekHandler, ChangeNotifier
     speed = p.getDouble('speed') ?? 1.0;
     skipBack = p.getInt('skip_back') ?? 15;
     skipForward = p.getInt('skip_forward') ?? 30;
+    rewindOn = p.getBool('rewind_on') ?? true;
+    final raw = p.getString('rewind_steps');
+    if (raw != null) {
+      try {
+        rewindSteps = [
+          for (final e in jsonDecode(raw) as List) RewindStep(e[0] as int, e[1] as int),
+        ]..sort((a, b) => a.pause.compareTo(b.pause));
+      } catch (_) {}
+    }
     notifyListeners();
+  }
+
+  // ------------------------------------------------------------ rewind after pause
+
+  /// After a pause of at least [RewindStep.pause] seconds, playback resumes
+  /// [RewindStep.back] seconds earlier. The longest matching pause wins.
+  bool rewindOn = true;
+  List<RewindStep> rewindSteps = List.of(RewindStep.defaults);
+
+  Future<void> setRewind({bool? on, List<RewindStep>? steps}) async {
+    if (on != null) rewindOn = on;
+    if (steps != null) rewindSteps = List.of(steps)..sort((a, b) => a.pause.compareTo(b.pause));
+    notifyListeners();
+    final p = await SharedPreferences.getInstance();
+    await p.setBool('rewind_on', rewindOn);
+    await p.setString('rewind_steps', jsonEncode([for (final r in rewindSteps) [r.pause, r.back]]));
+  }
+
+  /// Seconds to jump back after pausing for [paused].
+  int rewindFor(Duration paused) {
+    if (!rewindOn) return 0;
+    var back = 0;
+    for (final r in rewindSteps) {
+      if (paused.inSeconds >= r.pause) back = r.back;
+    }
+    return back;
   }
 
   Future<void> setSkips(int back, int fwd) async {
@@ -530,11 +566,8 @@ class PlayerController extends BaseAudioHandler with SeekHandler, ChangeNotifier
       await library.savePosition(b.id, 0, finished: false);
     }
     final since = _pausedAt == null ? Duration.zero : DateTime.now().difference(_pausedAt!);
-    if (since.inMinutes >= 5) {
-      await seekTo(position - 10);
-    } else if (since.inSeconds >= 30) {
-      await seekTo(position - 3);
-    }
+    final back = rewindFor(since);
+    if (back > 0) await seekTo(position - back);
     _pausedAt = null;
     _idleTimer?.cancel();
     if (_fading) {
@@ -923,4 +956,14 @@ class PlayerController extends BaseAudioHandler with SeekHandler, ChangeNotifier
     mediaItem.add(null);
     notifyListeners();
   }
+}
+
+/// One tier of "jump back after a pause": pause at least [pause] seconds,
+/// then resume [back] seconds earlier.
+class RewindStep {
+  final int pause;
+  final int back;
+  const RewindStep(this.pause, this.back);
+
+  static const defaults = [RewindStep(60, 2), RewindStep(600, 5), RewindStep(3600, 15)];
 }

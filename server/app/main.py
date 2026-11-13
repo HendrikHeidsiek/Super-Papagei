@@ -27,7 +27,7 @@ DATA = Path(os.environ.get("DATA_PATH", "/data"))
 CACHE = DATA / "cache"
 SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL_MINUTES", "30"))
 SERVER_NAME = os.environ.get("SERVER_NAME", "Super-Papagei")
-VERSION = "1.1.13"
+VERSION = "1.1.14"
 
 app = FastAPI(title="Super-Papagei", version=VERSION)
 scanner = Scanner(LIBRARY, CACHE)

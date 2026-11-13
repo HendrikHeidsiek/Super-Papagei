@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 LABEL org.opencontainers.image.title="Super-Papagei Server" \
       org.opencontainers.image.description="Hörbuch-Server für die Super-Papagei-App: liest /audiobooks, verwaltet Konten und Hörfortschritt." \
-      org.opencontainers.image.version="1.1.13"
+      org.opencontainers.image.version="1.1.14"
 
 # Start page details; release.sh fills them from release.local for your own image.
 ARG PUBLIC_URL=""
